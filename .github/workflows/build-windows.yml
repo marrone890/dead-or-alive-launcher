@@ -1,0 +1,30 @@
+name: Build Windows launcher
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '26'
+          cache: npm
+      - name: Check publication prerequisites
+        shell: pwsh
+        run: |
+          if (!(Test-Path LICENSE)) { throw 'The source licence needs owner approval before this build can be released.' }
+          if (!(Test-Path app/assets/launcher.ico)) { throw 'Redistributable assets and their licence notices must be included.' }
+      - run: npm ci
+      - run: node node_modules/electron/install.js
+      - run: node --check app/main.cjs
+      - run: node --check app/renderer.js
+      - run: npm run dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DeadOrAlive-Launcher-Windows-x64-unsigned
+          path: release/DeadOrAlive-Launcher-*.exe
+          if-no-files-found: error
+
