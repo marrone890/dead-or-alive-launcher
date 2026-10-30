@@ -1,0 +1,35 @@
+CREATE TABLE IF NOT EXISTS doa_social_accounts (
+ id CHAR(16) PRIMARY KEY, identifier VARCHAR(100) NOT NULL UNIQUE, name VARCHAR(80) NOT NULL,
+ online_at BIGINT NOT NULL DEFAULT 0, source_id INT NULL, guild_id CHAR(16) NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_links (
+ code_hash CHAR(64) PRIMARY KEY, account_id CHAR(16) NOT NULL, expires BIGINT NOT NULL,
+ KEY(expires)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_sessions (
+ token_hash CHAR(64) PRIMARY KEY, account_id CHAR(16) NOT NULL, expires BIGINT NOT NULL,
+ KEY(account_id), KEY(expires)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_friends (
+ a CHAR(16) NOT NULL, b CHAR(16) NOT NULL, requester CHAR(16) NOT NULL,
+ status VARCHAR(12) NOT NULL DEFAULT 'pending', PRIMARY KEY(a,b)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_guilds (
+ id CHAR(16) PRIMARY KEY, name VARCHAR(40) NOT NULL UNIQUE, owner_id CHAR(16) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_guild_invites (
+ guild_id CHAR(16) NOT NULL, account_id CHAR(16) NOT NULL, PRIMARY KEY(guild_id,account_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_messages (
+ id BIGINT AUTO_INCREMENT PRIMARY KEY, sender CHAR(16) NOT NULL, name VARCHAR(80) NOT NULL,
+ channel VARCHAR(12) NOT NULL, target VARCHAR(40) NOT NULL DEFAULT '', body VARCHAR(400) NOT NULL,
+ created BIGINT NOT NULL, KEY(channel,target,id), KEY(sender,created)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_state (
+ id INT PRIMARY KEY, payload LONGTEXT NOT NULL, updated BIGINT NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS doa_social_commands (
+ id BIGINT AUTO_INCREMENT PRIMARY KEY, account_id CHAR(16) NOT NULL, action VARCHAR(12) NOT NULL,
+ target VARCHAR(80) NOT NULL, created BIGINT NOT NULL, status VARCHAR(80) NOT NULL DEFAULT 'pending',
+ KEY(status,created), KEY(account_id,id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

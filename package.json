@@ -1,0 +1,49 @@
+{
+  "name": "dead-or-alive-launcher",
+  "version": "1.0.0",
+  "description": "Dead or Alive community launcher for RedM",
+  "author": "INFERNO-SPARTAN",
+  "private": true,
+  "main": "app/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable --x64 --publish never"
+  },
+  "devDependencies": {
+    "electron": "45.1.0",
+    "electron-builder": "26.18.0",
+    "playwright-core": "1.64.1"
+  },
+  "build": {
+    "appId": "it.doapvp.launcher",
+    "productName": "Dead or Alive",
+    "files": [
+      "app/**/*",
+      "package.json",
+      "LICENSE",
+      "THIRD_PARTY_NOTICES.md"
+    ],
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "publish": null,
+    "win": {
+      "target": "portable",
+      "icon": "app/assets/launcher.ico"
+    },
+    "portable": {
+      "artifactName": "DeadOrAlive-Launcher-${version}.exe",
+      "requestExecutionLevel": "user",
+      "useZip": true
+    },
+    "forceCodeSigning": false,
+    "compression": "normal"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marrone890/dead-or-alive-launcher.git"
+  },
+  "homepage": "https://github.com/marrone890/dead-or-alive-launcher"
+}

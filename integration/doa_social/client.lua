@@ -1,0 +1,6 @@
+CreateThread(function()
+ Wait(3000)
+ TriggerEvent('chat:addSuggestion','/launcher','Link the desktop launcher; /launcher revoke signs out every device.')
+ TriggerEvent('chat:addSuggestion','/g','Send a private message to your guild.',{{name='message',help='Your message'}})
+ TriggerEvent('chat:addSuggestion','/w','Whisper to an accepted friend.',{{name='player',help='Server player ID'},{name='message',help='Your message'}})
+end)
