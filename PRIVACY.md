@@ -1,6 +1,6 @@
 # Privacy policy
 
-Draft for the Dead or Alive Launcher. Review with the maintainer before publication.
+Privacy policy for the Dead or Alive Launcher.
 
 ## Network connections
 
@@ -56,5 +56,5 @@ selected. Their policies apply independently:
 
 Maintainer: INFERNO-SPARTAN / https://github.com/marrone890.
 Private contact can be arranged through the community Discord:
-https://discord.com/invite/caVCQcvJMG. A dedicated privacy email has not yet
-been supplied for this draft.
+https://discord.com/invite/caVCQcvJMG. Use a private conversation for requests
+involving account identifiers or message content.

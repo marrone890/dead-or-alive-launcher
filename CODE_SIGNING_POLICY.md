@@ -3,10 +3,10 @@
 Status: preparation only. SignPath Foundation has not approved this project,
 and the current releases are unsigned. No affiliation or endorsement is claimed.
 
-Proposed maintainer, committer, reviewer, and release approver:
+Maintainer, committer, reviewer, and release approver:
 [INFERNO-SPARTAN / marrone890](https://github.com/marrone890).
-The maintainer must confirm these roles and enable multi-factor authentication
-before applying. External contributions must be reviewed before release.
+The maintainer must use multi-factor authentication for repository and signing
+access. External contributions must be reviewed before release.
 
 Only project release packages built from the reviewed public source and its
 versioned build workflow may be submitted for signing. Each signing request must
